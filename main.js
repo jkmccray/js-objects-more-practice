@@ -62,7 +62,13 @@ const candidate = {
   name: "Elizabeth Sanger",
   congressionalDistrict: "5th",
   bio: "Elizabeth Sanger (born June 19, 1954) is an American politician serving as the U.S. Representative for Tennessee's 5th congressional district (based in Nashville), serving since 2003. She is a member of the Democratic Party and the Blue Dog Coalition, and previously represented Tennessee's 4th congressional district from 1983 to 1995.",
-  platformStatements: ["taxes", "jobs", "infrastructure", "health care", "crime and enforcement"],
+  platformStatements: {
+      Taxes: "Taxes schmaxes", 
+      Jobs: "Need more jobs",
+      Infrastructure: "Infrastructure - It's bayud",
+      HealthCare: "Universal health care",
+      CrimeAndEnforecement: "Just say no to drugz"
+    },
   missionStatement: "I work for you. As your representative in Congress, it's my job to make sure your voice is heard."
 }
 
@@ -111,3 +117,27 @@ const helpfulLinks = [
 
 const imageGallery = ["head shot", "picture of family", "picture of constituents"]
 
+// ------ Advanced Challenge ------
+// After you have defined all the objects for representing the data about Elizabeth's campaign, write a corresponding function 
+// for each one whose purpose is to change the state of the object. Then use your functions to modify the existing data.
+
+function addToImageGallery (newImage) {
+  imageGallery.push(newImage)
+}
+
+function changeBiography (newBiography) {
+  candidate["bio"] = newBiography
+}
+
+function changePlatform (topic, newPlatformStatement) {
+  candidate.platformStatements[topic] = newPlatformStatement
+}
+
+addToImageGallery("picture of mah face")
+console.log(imageGallery)
+
+changeBiography("New bio")
+console.log(candidate.bio)
+
+changePlatform("Taxes", "Raise taxes")
+console.log(candidate.platformStatements)
