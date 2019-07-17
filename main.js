@@ -58,86 +58,84 @@ console.table(allOrders)
 
 
 // ------ Challenge: Political Campaign ------ 
-const candidate = {
-  name: "Elizabeth Sanger",
-  congressionalDistrict: "5th",
-  bio: "Elizabeth Sanger (born June 19, 1954) is an American politician serving as the U.S. Representative for Tennessee's 5th congressional district (based in Nashville), serving since 2003. She is a member of the Democratic Party and the Blue Dog Coalition, and previously represented Tennessee's 4th congressional district from 1983 to 1995.",
-  platformStatements: {
-      Taxes: "Taxes schmaxes", 
-      Jobs: "Need more jobs",
-      Infrastructure: "Infrastructure - It's bayud",
-      HealthCare: "Universal health care",
-      CrimeAndEnforecement: "Just say no to drugz"
+const campaign = {
+  candidate: {
+    name: "Elizabeth Sanger",
+    congressionalDistrict: "5th",
+    bio: "Elizabeth Sanger (born June 19, 1954) is an American politician serving as the U.S. Representative for Tennessee's 5th congressional district (based in Nashville), serving since 2003. She is a member of the Democratic Party and the Blue Dog Coalition, and previously represented Tennessee's 4th congressional district from 1983 to 1995.",
+    platformStatements: {
+        Taxes: "Taxes schmaxes", 
+        Jobs: "Need more jobs",
+        Infrastructure: "Infrastructure - It's bayud",
+        HealthCare: "Universal health care",
+        CrimeAndEnforecement: "Just say no to drugz"
+      },
+    missionStatement: "I work for you. As your representative in Congress, it's my job to make sure your voice is heard."
+  },
+  calendar: [
+    {
+      eventName: "Charity Ball",
+      date: "7/30/19",
+      time: "6PM"
     },
-  missionStatement: "I work for you. As your representative in Congress, it's my job to make sure your voice is heard."
+    {
+      eventName: "Donation Luncheon",
+      date: "8/1/19",
+      time: "12PM"
+    }
+  ],
+  volunteers: [
+    {
+      volunteerName: "Beth",
+      address: "101 Your Beeswax Ave, Nashville, TN 12345",
+      email: "beth@gmail.com",
+      phoneNumber: "555-5555",
+      availabililty: "M, T, W, R",
+      activities: "answering phone calls"
+    },
+    {
+      volunteerName: "Mark",
+      address: "500 Twenty Five Thousand Six Hundred Ave, Nashville, TN 12345",
+      email: "markopolo@gmail.com",
+      phoneNumber: "555-5556",
+      availabililty: "T, W, R, F",
+      activities: "taking polls"
+    }
+  ],
+  helpfulLinks: [
+    {
+      urlName: "URL for donation form",
+      url: "https://cooper.house.gov/contact"
+    },
+    {
+      urlName: "URL for registering to vote",
+      url: "https://www.nashville.gov/Election-Commission/Register-to-Vote.aspx"
+    }
+  ],
+  imageGallery: ["head shot", "picture of family", "picture of constituents"]
 }
-
-const calendar = [
-  {
-    eventName: "Charity Ball",
-    date: "7/30/19",
-    time: "6PM"
-  },
-  {
-    eventName: "Donation Luncheon",
-    date: "8/1/19",
-    time: "12PM"
-  }
-]
-
-const volunteers = [
-  {
-    volunteerName: "Beth",
-    address: "101 Your Beeswax Ave, Nashville, TN 12345",
-    email: "beth@gmail.com",
-    phoneNumber: "555-5555",
-    availabililty: "M, T, W, R",
-    activities: "answering phone calls"
-  },
-  {
-    volunteerName: "Mark",
-    address: "500 Twenty Five Thousand Six Hundred Ave, Nashville, TN 12345",
-    email: "markopolo@gmail.com",
-    phoneNumber: "555-5556",
-    availabililty: "T, W, R, F",
-    activities: "taking polls"
-  }
-]
-
-const helpfulLinks = [
-  {
-    urlName: "URL for donation form",
-    url: "https://cooper.house.gov/contact"
-  },
-  {
-    urlName: "URL for registering to vote",
-    url: "https://www.nashville.gov/Election-Commission/Register-to-Vote.aspx"
-  }
-]
-
-const imageGallery = ["head shot", "picture of family", "picture of constituents"]
 
 // ------ Advanced Challenge ------
 // After you have defined all the objects for representing the data about Elizabeth's campaign, write a corresponding function 
 // for each one whose purpose is to change the state of the object. Then use your functions to modify the existing data.
 
 function addToImageGallery (newImage) {
-  imageGallery.push(newImage)
+  campaign.imageGallery.push(newImage)
 }
 
 function changeBiography (newBiography) {
-  candidate["bio"] = newBiography
+  campaign.candidate["bio"] = newBiography
 }
 
 function changePlatform (topic, newPlatformStatement) {
-  candidate.platformStatements[topic] = newPlatformStatement
+  campaign.candidate.platformStatements[topic] = newPlatformStatement
 }
 
 addToImageGallery("picture of mah face")
-console.log(imageGallery)
+console.log(campaign.imageGallery)
 
 changeBiography("New bio")
-console.log(candidate.bio)
+console.log(campaign.candidate.bio)
 
 changePlatform("Taxes", "Raise taxes")
-console.log(candidate.platformStatements)
+console.log(campaign.candidate.platformStatements)
