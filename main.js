@@ -90,16 +90,16 @@ const campaign = {
       address: "101 Your Beeswax Ave, Nashville, TN 12345",
       email: "beth@gmail.com",
       phoneNumber: "555-5555",
-      availabililty: "M, T, W, R",
-      activities: "answering phone calls"
+      availabililty: ["M", "T", "W", "R"],
+      activities: ["answering phone calls"]
     },
     {
       volunteerName: "Mark",
       address: "500 Twenty Five Thousand Six Hundred Ave, Nashville, TN 12345",
       email: "markopolo@gmail.com",
       phoneNumber: "555-5556",
-      availabililty: "T, W, R, F",
-      activities: "taking polls"
+      availabililty: ["T", "W", "R", "F"],
+      activities: ["taking polls"]
     }
   ],
   helpfulLinks: [
