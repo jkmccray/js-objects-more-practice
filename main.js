@@ -61,16 +61,25 @@ console.table(allOrders)
 const campaign = {
   candidate: {
     name: "Elizabeth Sanger",
+    changeName: newName => {
+      campaign.candidate.changeName = newName
+    },
     congressionalDistrict: "5th",
     bio: "Elizabeth Sanger (born June 19, 1954) is an American politician serving as the U.S. Representative for Tennessee's 5th congressional district (based in Nashville), serving since 2003. She is a member of the Democratic Party and the Blue Dog Coalition, and previously represented Tennessee's 4th congressional district from 1983 to 1995.",
     platformStatements: {
-        Taxes: "Taxes schmaxes", 
-        Jobs: "Need more jobs",
-        Infrastructure: "Infrastructure - It's bayud",
-        HealthCare: "Universal health care",
-        CrimeAndEnforecement: "Just say no to drugz"
-      },
-    missionStatement: "I work for you. As your representative in Congress, it's my job to make sure your voice is heard."
+      Taxes: "Taxes schmaxes",
+      Jobs: "Need more jobs",
+      Infrastructure: "Infrastructure - It's bayud",
+      HealthCare: "Universal health care",
+      CrimeAndEnforecement: "Just say no to drugz",
+      changePlatformStatment: (topic, newPlatformStatement) => {
+        campaign.candidate.platformStatements[topic] = newPlatformStatement
+      }
+    },
+    missionStatement: "I work for you. As your representative in Congress, it's my job to make sure your voice is heard.",
+    changeCandidateDetails: function (property, newDetails) {
+      campaign.candidate[property] = newDetails
+    }
   },
   calendar: [
     {
@@ -100,8 +109,14 @@ const campaign = {
       phoneNumber: "555-5556",
       availabililty: ["T", "W", "R", "F"],
       activities: ["taking polls"]
-    }
+    },
   ],
+  addVolunteer: (volunteerName, address, email, phoneNumber, availabililty, activities) => {
+    const newVolunteer = ({
+      volunteerName, address, email, phoneNumber, availabililty, activities
+    })
+    campaign.volunteers.push(newVolunteer)
+  },
   helpfulLinks: [
     {
       urlName: "URL for donation form",
@@ -112,30 +127,35 @@ const campaign = {
       url: "https://www.nashville.gov/Election-Commission/Register-to-Vote.aspx"
     }
   ],
-  imageGallery: ["head shot", "picture of family", "picture of constituents"]
+  addLink: function (urlName, url) {
+    const newLink = {urlName, url}
+    campaign.helpfulLinks.push(newLink) 
+  },
+  imageGallery: ["head shot", "picture of family", "picture of constituents"],
+  addToImageGallery: function (newImage) {
+    this.imageGallery.push(newImage)
+  }
 }
 
 // ------ Advanced Challenge ------
 // After you have defined all the objects for representing the data about Elizabeth's campaign, write a corresponding function 
 // for each one whose purpose is to change the state of the object. Then use your functions to modify the existing data.
 
-function addToImageGallery (newImage) {
-  campaign.imageGallery.push(newImage)
-}
+campaign.addLink("My website", "google.com")
+console.log(campaign.helpfulLinks)
 
-function changeBiography (newBiography) {
-  campaign.candidate["bio"] = newBiography
-}
+campaign.addVolunteer("Rick James", "300 B Place", "imrickjamesb@gmail.com", "503-2918", ["M", "W"], ["knock down doors"])
+console.table(campaign.volunteers)
+console.log(campaign.volunteers[2])
 
-function changePlatform (topic, newPlatformStatement) {
-  campaign.candidate.platformStatements[topic] = newPlatformStatement
-}
-
-addToImageGallery("picture of mah face")
+campaign.addToImageGallery("picture of mah face")
 console.log(campaign.imageGallery)
 
-changeBiography("New bio")
-console.log(campaign.candidate.bio)
-
-changePlatform("Taxes", "Raise taxes")
+campaign.candidate.platformStatements.changePlatformStatment("Taxes", "Raise taxes")
 console.log(campaign.candidate.platformStatements)
+
+campaign.candidate.changeName("Barbara Manatee")
+console.log(campaign.candidate.name)
+
+campaign.candidate.changeCandidateDetails("congressionalDistrict", "6th")
+console.log(campaign.candidate.congressionalDistrict)
